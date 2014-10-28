@@ -22,7 +22,7 @@
         expect(todo).to.have.property('name');
       });
 
-      it('should have an list number', function() {
+      it('should have an id', function() {
         expect(todo).to.have.property('id');
       });
 
@@ -30,20 +30,28 @@
         expect(todo).to.have.property('status');
       });
 
-      it('should have an display', function() {
-        expect(todo).to.have.property('display');
+      it('should have a visible', function() {
+        expect(todo).to.have.property('visible');
       });
 
-      it('should be false by default', function() {
-        expect(todo.status).to.equal('false');
-        todo.comp();
-        expect(todo.status).to.equal('true');
+
+
+      it('should be status false by default', function() {
+        expect(todo.status).to.equal(false);
       });
 
-      it('should overwrite status true to be false', function() {
-        expect(todo.status).to.equal('true');
-        todo.comp();
-        expect(todo.status).to.equal('false');
+      it('should change status when selected', function() {
+
+        if(options.status = true) {
+          todo.comp();
+          this.status = false;
+          expect(todo.status).to.equal(false);
+        } else {
+          todo.comp();
+          this.status = true;
+          expect(todo.status).to.equal(true);
+        };
+
       });
 
       it('should show total items', function(){
