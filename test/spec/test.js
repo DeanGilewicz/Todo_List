@@ -8,8 +8,8 @@
     var todo;
 
     // before each describe statement runs todo = new Todo
-    beforeEach(function(){
-      todo = new Todo;
+    beforeEach(function() {
+      todo = new Todo();
     });
 
     describe('List Items', function() {
@@ -22,8 +22,8 @@
         expect(todo).to.have.property('name');
       });
 
-      it('should have an id', function() {
-        expect(todo).to.have.property('id');
+      it('should have a number', function() {
+        expect(todo).to.have.property('number');
       });
 
       it('should have a status', function() {
@@ -41,29 +41,24 @@
       });
 
       it('should change status when selected', function() {
-
-        if(options.status = true) {
-          todo.comp();
-          this.status = false;
-          expect(todo.status).to.equal(false);
-        } else {
-          todo.comp();
-          this.status = true;
-          expect(todo.status).to.equal(true);
-        };
-
+        expect(todo.status).to.equal(false);
+        todo.comp();
+        expect(todo.status).to.equal(true);
+        todo.comp();
+        expect(todo.status).to.equal(false);
       });
 
-      it('should show total items', function(){
-        expect(todo.total).to.equal('todo.length');
-      });
 
-      it('should hide item when clicked', function() {
-        expect(todo.display).to.equal('show');
+      it('should delete item when clicked', function() {
+        expect(todo.visible).to.equal(true);
         todo.delete();
-        expect(todo.display).to.equal('hide');
+        expect(todo.visible).to.equal(false);
       });
 
+      // it('should show total nunmber of items', function(){
+      //   todo.total();
+      //   expect(todo.total).to.equal();
+      // });
 
     });
 
