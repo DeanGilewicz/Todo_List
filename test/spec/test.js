@@ -5,11 +5,12 @@
 
   describe('Todo Object', function() {
 
-    var todo;
+    var todo, task_list;
 
     // before each describe statement runs todo = new Todo
     beforeEach(function() {
       todo = new Todo();
+      task_list = [];
     });
 
     describe('List Items', function() {
@@ -30,10 +31,6 @@
         expect(todo).to.have.property('status');
       });
 
-      it('should have a visible', function() {
-        expect(todo).to.have.property('visible');
-      });
-
 
 
       it('should be status false by default', function() {
@@ -42,9 +39,9 @@
 
       it('should change status when selected', function() {
         expect(todo.status).to.equal(false);
-        todo.comp();
+        todo.selected();
         expect(todo.status).to.equal(true);
-        todo.comp();
+        todo.selected();
         expect(todo.status).to.equal(false);
       });
 
@@ -54,6 +51,18 @@
         todo.delete();
         expect(todo.visible).to.equal(false);
       });
+
+      it('should delete add item when clicked', function() {
+        expect(todo.visible).to.equal(true);
+        todo.delete();
+        expect(todo.visible).to.equal(false);
+      });
+
+      // it('should list another todo when one is added', function() {
+      //   expect(task_list.length).to.equal(0);
+      //   task_list.add(todo);
+      //   expect(task_list.length).to.equal(1);
+      // });
 
       // it('should show total nunmber of items', function(){
       //   todo.total();
