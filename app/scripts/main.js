@@ -22,7 +22,7 @@ $.getJSON(my_server).done( function (data) {
     my_todo_list = data;
 
   _.each(my_todo_list, function(item) {
-    $('#todoList').append(rendered(item));
+    $('#todoList').append(rendered(task_template));
   });
 
 });
@@ -37,30 +37,31 @@ $('#Chores').on('submit', function (event) {
   event.preventDefault();
   var item_self = this;
 
-  // Grag the task value
+  // Grab the task value
   contents = $('#input_text').val();
-
+  console.log(contents);
   // Create a new ToDo instance
   task = new ToDo({ task: contents });
-
+  console.log(task);
   // Send to our server
-  // $.ajax({
-  //   type: 'POST',
-  //   content: JSON,
-  //   url: my_server,
-  //   data: task
-  // }).done( function(data) {
+  $.ajax({
+    type: 'POST',
+    content: JSON,
+    url: my_server,
+    data: task
+  }).done( function(data) {
 
     // Add to my todo_list - push to array
     my_todo_list.push(data);
-
+    console.log(my_todo_list);
+    console.log(data);
     // Show our task on the page
     $('#todoList').append(rendered(data));
-
+    console.log(data);
     // Reset my form
     $(item_self)[0].reset();
-
-  // });
+    console.log(item_self);
+  });
 
 });
 
@@ -85,25 +86,71 @@ $('#todoList').on('click', 'li', function (event) {
     $(this).addClass('complete');
   }
 
-  // $.ajax ({
-  //   type: 'PUT',
-  //   url: my_server + "/" + task_manager._id,
-  //   data: task_manager
-  // });
+  $.ajax ({
+    type: 'PUT',
+    url: my_server + "/" + task_manager._id,
+    data: task_manager
+  });
 
 });
 
 
-// when delete button is clicked - remove this item from list
-// $('When remove btn is clicked').on('click', function() {
-//   this.remove();
+// var item_delete;
+// // when delete button is clicked - delete this item from list and server
+// $('#todoList').on('click', 'span', function (event) {
+//   event.preventDefault();
+//
+//   var id = $(this).attr('id');
+//   console.log(id);
+//
+//   item_delete = findWhere(my_todo_list, { _id: id });
+//   $.ajax ({
+//     type: 'DELETE',
+//     url: my_server + "/" + item_delete._id,
+//     data: task_manager
+//   });
+//
+//   $(this).remove();
+//
 // });
 
-// $.ajax ({
-//   type: 'DELETE',
-//   url: my_server + "/" + task_manager._id,
-//   data: todo_modifier
+// $('#todoList').on('click', 'li', function (event) {
+//   event.preventDefault();
+//
+//
+//   // Grag the task value
+//   contents = $('#input_text').val();
+//
+//   // Create a new ToDo instance
+//   task = new ToDo({ task: contents });
+//
+//   // Send to our server
+//   $.ajax({
+//     type: 'POST',
+//     content: JSON,
+//     url: my_server,
+//     data: task
+//   }).done( function(data) {
+//
+//     // Add to my todo_list - push to array
+//     my_todo_list.push(data);
+//
+//     // Show our task on the page
+//     $('#todoList').append(rendered(data));
+//
+//     // Reset my form
+//     $(item_self)[0].reset();
+//
+//   });
+//
 // });
+
+
+
+
+
+
+
 
 // // FILTER - when all button is clicked - show all list items
 // $('When item is added').on('click', function() {

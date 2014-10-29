@@ -34,11 +34,19 @@
 
     <script type="text/template" id="script_all_items">
       <% if(finished == 'true') { %>
-        <li id="<%= _id %>" class="complete"><%= task %></li>
+        <li id="<%= _id %>" class="complete"><%= task %><button id="" class="delBtn">XXX</button></li>
       <% } else { %>
-        <li id="<%= _id %>" ><%= task %></li>
+        <li id="<%= _id %>"><%= task %><button id="" class="delBtn">XXX</button></li>
       <% } %>
     </script>
+
+
+    <!--
+    <script type="text/template" id="total">
+        <li id="<%= _id %>"><%= task %></li
+    </script>
+    -->
+
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
