@@ -30,20 +30,25 @@ $.getJSON(my_server).done( function (data) {
 
 // adding new tasks to my todo list
 var task, contents;
+// var total_tasks = $('#todoList li').length;
+// $('#all').html(total_tasks);
 
 // when add button is clicked - a new item is added to list (array)
-// at the moment when form is clicked = knows to look for button that has id submit
 $('#Chores').on('submit', function (event) {
   event.preventDefault();
+
+  if($('#input_text').val() === '') {
+    alert('Please Enter A Chore');
+    return false;
+  };
+
   var item_self = this;
 
-  // Grab the task value
+  // Grab the input value from form
   contents = $('#input_text').val();
-  console.log(contents);
 
   // Create a new ToDo instance
   task = new ToDo({ task: contents });
-  console.log(task);
 
   // Send to our server
   $.ajax({
@@ -55,14 +60,16 @@ $('#Chores').on('submit', function (event) {
 
     // Add to my todo_list - push to array
     my_todo_list.push(data);
-    console.log(my_todo_list);
-    console.log(data);
+
     // Show our task on the page
     $('#todoList').append(rendered(data));
-    console.log(data);
+
     // Reset my form
     $(item_self)[0].reset();
-    console.log(item_self);
+
+    // total counter - changes when tasks are deleted
+    var total_tasks = $('#todoList li').length;
+    $('#all').html(total_tasks);
   });
 
 });
@@ -83,9 +90,18 @@ $('#todoList').on('click', 'li', function (event) {
   if (task_manager.finished === 'true') {
     task_manager.finished = 'false';
     $(this).removeClass('complete');
+
+    var count_down = $('#todoList').length - 0;
+    $('#completed').html(count_down);
+
   } else {
     task_manager.finished = 'true';
     $(this).addClass('complete');
+
+
+    var count_up = $('#todoList').length;
+    $('#completed').html(count_up);
+
   }
 
   $.ajax ({
@@ -93,6 +109,7 @@ $('#todoList').on('click', 'li', function (event) {
     url: my_server + "/" + task_manager._id,
     data: task_manager
   });
+
 
 });
 
@@ -105,10 +122,8 @@ $('#todoList').on('click', 'button', function (event) {
 
   // - delete this item from list and server
   var id = $(this).attr('id');
-  console.log(id);
 
   item_delete = _.findWhere(my_todo_list, { _id: id });
-  console.log(my_todo_list);
 
   $.ajax ({
     type: 'DELETE',
@@ -119,28 +134,27 @@ $('#todoList').on('click', 'button', function (event) {
     $(self).remove();
   });
 
-});
+  // total counter - changes when tasks are deleted
+  var total_tasks = $('#todoList li').length - 1;
+  $('#all').html(total_tasks);
 
-// FILTER - when all button is clicked - show all list items
-$('#all').on('click', function (event) {
-  event.preventDefault();
-  // show all list items
-});
-
-// FILTER - when completed button is clicked - show completed list items only
-$('#complete').on('click', function (event) {
-  event.preventDefault();
-  // completed list items only
-});
-
-//FILTER - when incomplete button is clicked - show incomplete list items only
-$('#incomplete').on('click', function (event) {
-  event.preventDefault();
-  // show incomplete list items only
 });
 
 
-
-// this.total = function () {
-//   return task_manager.length;
-// };
+// // FILTER - when all button is clicked - show all list items
+// $('#all').on('click', function (event) {
+//   event.preventDefault();
+//   // show all list items
+// });
+//
+// // FILTER - when completed button is clicked - show completed list items only
+// $('#complete').on('click', function (event) {
+//   event.preventDefault();
+//   // completed list items only
+// });
+//
+// //FILTER - when incomplete button is clicked - show incomplete list items only
+// $('#incomplete').on('click', function (event) {
+//   event.preventDefault();
+//   // show incomplete list items only
+// });
