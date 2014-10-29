@@ -98,11 +98,12 @@ $('#todoList').on('click', 'li', function (event) {
 
 
 var item_delete;
-// when delete button is clicked - delete this item from list and server
+// when delete button is clicked
 $('#todoList').on('click', 'button', function (event) {
   event.preventDefault();
   var self = this;
 
+  // - delete this item from list and server
   var id = $(this).attr('id');
   console.log(id);
 
@@ -120,58 +121,23 @@ $('#todoList').on('click', 'button', function (event) {
 
 });
 
-// $('#todoList').on('click', 'li', function (event) {
-//   event.preventDefault();
-//
-//
-//   // Grag the task value
-//   contents = $('#input_text').val();
-//
-//   // Create a new ToDo instance
-//   task = new ToDo({ task: contents });
-//
-//   // Send to our server
-//   $.ajax({
-//     type: 'POST',
-//     content: JSON,
-//     url: my_server,
-//     data: task
-//   }).done( function(data) {
-//
-//     // Add to my todo_list - push to array
-//     my_todo_list.push(data);
-//
-//     // Show our task on the page
-//     $('#todoList').append(rendered(data));
-//
-//     // Reset my form
-//     $(item_self)[0].reset();
-//
-//   });
-//
-// });
+// FILTER - when all button is clicked - show all list items
+$('#all').on('click', function (event) {
+  event.preventDefault();
+  // show all list items
+});
 
+// FILTER - when completed button is clicked - show completed list items only
+$('#complete').on('click', function (event) {
+  event.preventDefault();
+  // completed list items only
+});
 
-
-
-
-
-
-
-// // FILTER - when all button is clicked - show all list items
-// $('When item is added').on('click', function() {
-//   // show all list items
-// });
-//
-// // FILTER - when completed button is clicked - show completed list items only
-// $('When list item is clicked').on('click', function() {
-//   this.status();
-// });
-//
-// // FILTER - when incomplete button is clicked - show incomplete list items only
-// $('When list item is clicked').on('click', function() {
-//   this.selected();
-// });
+//FILTER - when incomplete button is clicked - show incomplete list items only
+$('#incomplete').on('click', function (event) {
+  event.preventDefault();
+  // show incomplete list items only
+});
 
 
 
