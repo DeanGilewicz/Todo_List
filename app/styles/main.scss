@@ -42,6 +42,16 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 50px;
+    width: 400px;
+
+    .delBtn {
+      margin-left: 200px;
+
+      &:hover {
+        cursor: default;
+        background-color: blue;
+      }
+    }
 
     &.complete {
       background-color: black;

@@ -1,4 +1,4 @@
-var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg1';
+var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg2';
 
 // ToDo Constructor (Blueprint)
 var ToDo = function (options) {
@@ -21,8 +21,8 @@ $.getJSON(my_server).done( function (data) {
 
     my_todo_list = data;
 
-  _.each(my_todo_list, function(item) {
-    $('#todoList').append(rendered(task_template));
+  _.each(my_todo_list, function(items) {
+    $('#todoList').append(rendered(items));
   });
 
 });
@@ -40,9 +40,11 @@ $('#Chores').on('submit', function (event) {
   // Grab the task value
   contents = $('#input_text').val();
   console.log(contents);
+
   // Create a new ToDo instance
   task = new ToDo({ task: contents });
   console.log(task);
+
   // Send to our server
   $.ajax({
     type: 'POST',
@@ -95,24 +97,28 @@ $('#todoList').on('click', 'li', function (event) {
 });
 
 
-// var item_delete;
-// // when delete button is clicked - delete this item from list and server
-// $('#todoList').on('click', 'span', function (event) {
-//   event.preventDefault();
-//
-//   var id = $(this).attr('id');
-//   console.log(id);
-//
-//   item_delete = findWhere(my_todo_list, { _id: id });
-//   $.ajax ({
-//     type: 'DELETE',
-//     url: my_server + "/" + item_delete._id,
-//     data: task_manager
-//   });
-//
-//   $(this).remove();
-//
-// });
+var item_delete;
+// when delete button is clicked - delete this item from list and server
+$('#todoList').on('click', 'button', function (event) {
+  event.preventDefault();
+  var self = this;
+
+  var id = $(this).attr('id');
+  console.log(id);
+
+  item_delete = _.findWhere(my_todo_list, { _id: id });
+  console.log(my_todo_list);
+
+  $.ajax ({
+    type: 'DELETE',
+    url: my_server + "/" + item_delete._id,
+    data: item_delete
+  }).done(function () {
+    $(self).prev().remove();
+    $(self).remove();
+  });
+
+});
 
 // $('#todoList').on('click', 'li', function (event) {
 //   event.preventDefault();
