@@ -24,18 +24,21 @@
   <body>
 
     <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Normalize CSS</li>
-        <li>Sass</li>
-        <li>Modernizr</li>
-        <li>Bourbon & Neat</li>
-        <li>UnderscoreJS</li>
-      </ul>
-      <p>Don't forget to update your readme file!!</p>
+      <h1>Do Your Chores!</h1>
+      <form id="Chores">
+          <input id="input_text" placeholder="Enter Your Chore" value="" />
+          <button id="submit">Add</button>
+      </form>
+      <ul id="todoList"></ul>
     </div>
+
+    <script type="text/template" id="script_all_items">
+      <% if(finished == 'true') { %>
+        <li id="<%= _id %>" class="complete"><%= task %></li>
+      <% } else { %>
+        <li id="<%= _id %>" ><%= task %></li>
+      <% } %>
+    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->

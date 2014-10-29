@@ -11,16 +11,39 @@ body {
 
 .hero-unit {
   margin: 50px auto 0 auto;
-  width: 600px;
+  width: 700px;
   font-size: 18px;
-  font-weight: 200;
   line-height: 30px;
-  background-color: #eee;
+  background-color: red;
   border-radius: 6px;
   padding: 60px;
+
   h1 {
     font-size: 60px;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: 2px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 25px;
+    padding: 1px 20px;
+    background-color: green;
+    list-style: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &.complete {
+      background-color: black;
+    }
   }
 }
