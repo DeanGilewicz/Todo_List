@@ -23,6 +23,7 @@ $.getJSON(my_server).done( function (data) {
 
   _.each(my_todo_list, function(items) {
     $('#todoList').append(rendered(items));
+    $('#all').html(my_todo_list.length);
   });
 
 });
