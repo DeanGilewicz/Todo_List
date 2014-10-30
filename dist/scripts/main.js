@@ -1,3 +1,52 @@
+/* global describe, it */
+
+(function () {
+  'use strict';
+
+  describe('Todo Object', function() {
+
+    var task, task_list;
+
+    // before each describe statement runs todo = new Todo
+    beforeEach(function() {
+      task = new ToDo();
+    });
+
+    describe('List Items', function() {
+
+      it('should be an instance of todo', function() {
+        expect(task).to.be.an.instanceof(ToDo);
+      });
+
+      it('should have a task', function() {
+        expect(task).to.have.property('task');
+      });
+
+      it('should have a finished', function() {
+        expect(task).to.have.property('finished');
+      });
+
+      it('should be status false by default', function() {
+        expect(task.finished).to.equal('false');
+      });
+
+      // it('should list another todo when one is added', function() {
+      //   expect(task_list.length).to.equal(0);
+      //   task_list.add(task);
+      //   expect(task_list.length).to.equal(1);
+      // });
+      //
+      // it('should show total nunmber of items', function(){
+      //   todo.total();
+      //   expect(todo.total).to.equal();
+      // });
+
+    });
+
+  });
+
+})();
+
 var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg4';
 
 // ToDo Constructor (Blueprint)
@@ -31,8 +80,6 @@ $.getJSON(my_server).done( function (data) {
 
 // adding new tasks to my todo list
 var task, contents;
-// var total_tasks = $('#todoList li').length;
-// $('#all').html(total_tasks);
 
 // when add button is clicked - a new item is added to list (array)
 $('#Chores').on('submit', function (event) {
@@ -79,7 +126,6 @@ $('#Chores').on('submit', function (event) {
 
 var incomplete, completed;
 
-
 // Manage ToDo items - marking them complete/incomplete
 var task_manager;
 
@@ -111,6 +157,7 @@ $('#todoList').on('click', 'li', function (event) {
 
 
 var item_delete;
+
 // when delete button is clicked
 $('#todoList').on('click', 'input', function (event) {
   event.preventDefault();
@@ -137,39 +184,24 @@ $('#todoList').on('click', 'input', function (event) {
 });
 
 
-
 // FILTER - when completed button is clicked - show completed list items only
 // $('#show_comp').on('click', function () {
 //
-//   if(task_manager.finished === 'true') {
-//
-//     return $(task_manager).length - ;
-//
-//
-// var id = $(this).attr('id');
-//
-// item_delete = _.findWhere(my_todo_list, { _id: id });
-//
 //   }
-//
 //
 // });
 
 
-// //FILTER - when incomplete button is clicked - show incomplete list items only
+//FILTER - when incomplete button is clicked - show incomplete list items only
 // $('#show_incomp').on('click', function (event) {
 //   event.preventDefault();
 //   // show incomplete list items only
 // });
-//
-//
-//
-//
-// // FILTER - when all button is clicked - show all list items
+
+
+// FILTER - when all button is clicked - show all list items
 // $('#show_all').on('click', function () {
-//   if()
-//
+//   // show all list items
 //   }
 //
-//   // show all list items
 // });
