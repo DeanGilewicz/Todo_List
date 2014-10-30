@@ -53,11 +53,11 @@
 
     <script type="text/template" id="script_all_items">
       <% if(finished == 'true') { %>
-        <li id="<%= _id %>" class="complete"><button id="" class="checked"></button><%= task %></li>
-        <button id="<%= _id %>" class="del_btn"></button>
+        <li id="<%= _id %>" class="complete"><button id="done" class="checked"></button><%= task %></li>
+        <input id="<%= _id %>" class="del_btn"></input>
       <% } else { %>
-        <li id="<%= _id %>"><button id="" class="checked"></button><%= task %></li>
-        <button id="<%= _id %>" class="del_btn"></button>
+        <li id="<%= _id %>"><button id="done" class="checked"></button><%= task %></li>
+        <input id="<%= _id %>" class="del_btn"></input>
       <% } %>
     </script>
 

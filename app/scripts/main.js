@@ -1,4 +1,4 @@
-var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg3';
+var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg4';
 
 // ToDo Constructor (Blueprint)
 var ToDo = function (options) {
@@ -87,24 +87,16 @@ $('#todoList').on('click', 'li', function (event) {
   event.preventDefault();
 
   var myID = $(this).attr('id');
-
   // Find the instance of my task
   task_manager = _.findWhere(my_todo_list, { _id: myID });
-
   //If it's complete, mark it as complete, else mark it done
-  if (task_manager.finished === 'true') {
-    task_manager.finished = 'false';
-    $(this).removeClass('complete');
-
-    $(task_manager).length;
-    $('#incomplete').html(incomplete);
-
-  } else {
+  if (task_manager.finished == 'false') {
     task_manager.finished = 'true';
     $(this).addClass('complete');
 
-    var completed = $(this).length;
-    $('#completed').html(completed);
+  } else if(task_manager.finished == 'true') {
+    task_manager.finished = 'false';
+    $(this).removeClass('complete');
 
   }
 
@@ -120,7 +112,7 @@ $('#todoList').on('click', 'li', function (event) {
 
 var item_delete;
 // when delete button is clicked
-$('#todoList').on('click', 'button', function (event) {
+$('#todoList').on('click', 'input', function (event) {
   event.preventDefault();
   var self = this;
 

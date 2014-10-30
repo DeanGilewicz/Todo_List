@@ -71,11 +71,10 @@ body {
     list-style: none;
     color: RGBA(94, 140, 211, 1);
     border-radius: 10px;
-    cursor: pointer;
     line-height: 50px;
 
     &.complete {
-      background-color: green;
+      color: red;
       text-decoration: line-through;
       text-decoration-style: double;
     }
@@ -95,6 +94,7 @@ body {
 
   &:hover {
     background-color: black;
+    cursor: pointer;
   }
 }
 
@@ -111,5 +111,6 @@ body {
 
   &:hover {
     background-color: black;
+    cursor: pointer;
   }
 }
