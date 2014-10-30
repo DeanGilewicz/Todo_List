@@ -44,7 +44,7 @@ body {
   h1 {
     float: left;
     width: 330px;
-    margin: 105px 50px 0px 165px;
+    margin: 105px 50px 25px 165px;
     font-size: 40px;
     color: RGBA(94, 140, 211, 1);
     letter-spacing: 1.5px;
@@ -57,22 +57,22 @@ body {
   }
 
   ul {
-    margin: 80px 175px 0px 175px;
+    overflow: auto;
+    margin: 20px 175px 0px 165px;
     padding: 0px;
-    width: 690px;
+    width: 677px;
   }
 
   li {
-    margin: 5px 0px 30px 0px;
-    padding: 1px 0px;
+    float: left;
+    width: 600px;
+    height: 40px;
+    margin: 7px 0px 30px 0px;
     list-style: none;
     color: RGBA(94, 140, 211, 1);
     border-radius: 10px;
     cursor: pointer;
-    width: 634px;
-    display: inline-block;
-    border: 1px solid red;
-    height: 40px;
+    line-height: 50px;
 
     &.complete {
       background-color: green;
@@ -84,12 +84,14 @@ body {
 
 .checked {
   float: left;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
+  margin-right: 20px;
   background-image: url('../images/CheckMark.png');
   background-size: 100%;
   background-repeat: no-repeat;
   background-color: transparent;
+  border: none;
 
   &:hover {
     background-color: black;
@@ -98,12 +100,14 @@ body {
 
 .del_btn {
   float: right;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
   background-image: url('../images/DeleteIcon.png');
   background-size: 100%;
   background-repeat: no-repeat;
   background-color: transparent;
+  border: none;
 
   &:hover {
     background-color: black;
