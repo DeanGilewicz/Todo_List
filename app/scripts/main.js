@@ -1,4 +1,4 @@
-var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg2';
+var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg3';
 
 // ToDo Constructor (Blueprint)
 var ToDo = function (options) {

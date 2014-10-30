@@ -20,30 +20,40 @@ body {
 .hero-unit {
   margin: 0px;
   width: 100%;
+  min-height: 400px;
+  max-height: 1150px;
   font-size: 18px;
   border-radius: 6px;
 
-  .all {
-  width: 100px;
-  height: 100px;
-  font-size: 20px;
-  background-color: blue;
+  .counter {
+    float: right;
+    overflow: auto;
+    width: 200px;
+    margin: 28px 50px 00px 0px;
+    font-size: 12px;
+
+    .tt, .tc, .ti {
+      margin: 6px 0px;
+    }
+
+    #all {
+      margin-left: 40px;
+    }
   }
 
   h1 {
+    float: left;
+    width: 330px;
+    margin: 105px 50px 0px 165px;
     font-size: 40px;
     color: RGBA(94, 140, 211, 1);
-    line-height: 1;
     letter-spacing: 1.5px;
-    width: 505px;
-    padding-top: 110px;
-    padding-left: 175px;
-    margin: 0px 0px -38px;
+
   }
   form {
-    margin-bottom: 20px;
-    float: right;
-    margin-right: 50px;
+    float: left;
+    width: 310px;
+    margin: 10px 0px 0px 0px;
   }
 
   ul {
@@ -53,7 +63,7 @@ body {
   }
 
   li {
-    margin: 7px 0px 30px 0px;
+    margin: 5px 0px 30px 0px;
     padding: 1px 0px;
     list-style: none;
     color: RGBA(94, 140, 211, 1);
@@ -64,37 +74,38 @@ body {
     border: 1px solid red;
     height: 40px;
 
-
-    .delBtn {
-      float: left;
-      color: RGBA(94, 140, 211, 1);
-      background-color: white;
-      border-radius: 3px;
-
-      &:hover {
-        cursor: default;
-        background-color: blue;
-      }
-    }
-
     &.complete {
-      //background-color: green;
+      background-color: green;
       text-decoration: line-through;
       text-decoration-style: double;
     }
   }
 }
 
-  input {
-  line-height: normal;
-  color: RGBA(255, 77, 79, 1);
-  border-color: RGBA(94, 140, 211, 1);
-  border-radius: 3px;
-  letter-spacing: 1.5px;
-  padding-left: 7px;
+.checked {
+  float: left;
+  width: 35px;
+  height: 35px;
+  background-image: url('../images/CheckMark.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  &:hover {
+    background-color: black;
   }
-  #submit {
-    color: RGBA(94, 140, 211, 1);
-    background-color: white;
-    border-radius: 3px;
+}
+
+.del_btn {
+  float: right;
+  width: 35px;
+  height: 35px;
+  background-image: url('../images/DeleteIcon.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  &:hover {
+    background-color: black;
   }
+}
