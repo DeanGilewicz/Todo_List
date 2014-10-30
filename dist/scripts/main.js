@@ -30,17 +30,6 @@
         expect(task.finished).to.equal('false');
       });
 
-      // it('should list another todo when one is added', function() {
-      //   expect(task_list.length).to.equal(0);
-      //   task_list.add(task);
-      //   expect(task_list.length).to.equal(1);
-      // });
-      //
-      // it('should show total nunmber of items', function(){
-      //   todo.total();
-      //   expect(todo.total).to.equal();
-      // });
-
     });
 
   });
