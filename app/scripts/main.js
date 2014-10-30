@@ -68,12 +68,16 @@ $('#Chores').on('submit', function (event) {
     // Reset my form
     $(item_self)[0].reset();
 
-    // total counter - changes when tasks are deleted
+    // total counter - changes when tasks are added
     var total_tasks = $('#todoList li').length;
     $('#all').html(total_tasks);
   });
 
 });
+
+
+
+var incomplete, completed;
 
 
 // Manage ToDo items - marking them complete/incomplete
@@ -92,16 +96,15 @@ $('#todoList').on('click', 'li', function (event) {
     task_manager.finished = 'false';
     $(this).removeClass('complete');
 
-    var count_down = $('#todoList').length - 0;
-    $('#completed').html(count_down);
+    $(task_manager).length;
+    $('#incomplete').html(incomplete);
 
   } else {
     task_manager.finished = 'true';
     $(this).addClass('complete');
 
-
-    var count_up = $('#todoList').length;
-    $('#completed').html(count_up);
+    var completed = $(this).length;
+    $('#completed').html(completed);
 
   }
 
@@ -142,20 +145,39 @@ $('#todoList').on('click', 'button', function (event) {
 });
 
 
-// // FILTER - when all button is clicked - show all list items
-// $('#all').on('click', function (event) {
-//   event.preventDefault();
-//   // show all list items
-// });
+
+// FILTER - when completed button is clicked - show completed list items only
+// $('#show_comp').on('click', function () {
 //
-// // FILTER - when completed button is clicked - show completed list items only
-// $('#complete').on('click', function (event) {
-//   event.preventDefault();
-//   // completed list items only
-// });
+//   if(task_manager.finished === 'true') {
 //
+//     return $(task_manager).length - ;
+//
+//
+// var id = $(this).attr('id');
+//
+// item_delete = _.findWhere(my_todo_list, { _id: id });
+//
+//   }
+//
+//
+// });
+
+
 // //FILTER - when incomplete button is clicked - show incomplete list items only
-// $('#incomplete').on('click', function (event) {
+// $('#show_incomp').on('click', function (event) {
 //   event.preventDefault();
 //   // show incomplete list items only
+// });
+//
+//
+//
+//
+// // FILTER - when all button is clicked - show all list items
+// $('#show_all').on('click', function () {
+//   if()
+//
+//   }
+//
+//   // show all list items
 // });

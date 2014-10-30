@@ -1,65 +1,75 @@
- // Bourbon & Neat
+// Bourbon & Neat
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
 body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #fafafa  ;
+  font-family: 'Pacifico', cursive;
   color: #333;
 }
 
 .container {
   margin: 0 auto;
-  width: 100%;
+  width: 900px;
+  background-image: url('../images/notepad.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
+.hero-unit {
+  margin: 0px;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 6px;
 
-.all {
+  .all {
   width: 100px;
   height: 100px;
   font-size: 20px;
   background-color: blue;
-}
-
-.hero-unit {
-  margin: 30px auto 0 auto;
-  width: 100%;
-  font-size: 18px;
-  line-height: 30px;
-  background-image: url('../images/notepad.png');
-  background-repeat: no-repeat;
-  border-radius: 6px;
-  padding: 60px;
-
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: 2px;
   }
 
+  h1 {
+    font-size: 40px;
+    color: RGBA(94, 140, 211, 1);
+    line-height: 1;
+    letter-spacing: 1.5px;
+    width: 505px;
+    padding-top: 110px;
+    padding-left: 175px;
+    margin: 0px 0px -38px;
+  }
   form {
     margin-bottom: 20px;
+    float: right;
+    margin-right: 50px;
   }
 
   ul {
-    margin: 0;
-    padding: 0;
+    margin: 80px 175px 0px 175px;
+    padding: 0px;
+    width: 690px;
   }
 
   li {
-    margin-bottom: 25px;
-    padding: 1px 20px;
-    background-color: black;
+    margin: 7px 0px 30px 0px;
+    padding: 1px 0px;
     list-style: none;
-    color: white;
+    color: RGBA(94, 140, 211, 1);
     border-radius: 10px;
     cursor: pointer;
-    font-size: 50px;
-    width: 400px;
+    width: 634px;
+    display: inline-block;
+    border: 1px solid red;
+    height: 40px;
+
 
     .delBtn {
-      margin-left: 200px;
+      float: left;
+      color: RGBA(94, 140, 211, 1);
+      background-color: white;
+      border-radius: 3px;
 
       &:hover {
         cursor: default;
@@ -68,8 +78,23 @@ body {
     }
 
     &.complete {
-      background-color: green;
+      //background-color: green;
       text-decoration: line-through;
+      text-decoration-style: double;
     }
   }
 }
+
+  input {
+  line-height: normal;
+  color: RGBA(255, 77, 79, 1);
+  border-color: RGBA(94, 140, 211, 1);
+  border-radius: 3px;
+  letter-spacing: 1.5px;
+  padding-left: 7px;
+  }
+  #submit {
+    color: RGBA(94, 140, 211, 1);
+    background-color: white;
+    border-radius: 3px;
+  }
