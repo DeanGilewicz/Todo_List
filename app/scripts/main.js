@@ -24,23 +24,25 @@ $.getJSON(my_server).done( function (data) {
   _.each(my_todo_list, function(items) {
     $('#todoList').append(rendered(items));
     $('#all').html(my_todo_list.length);
+    count_area();
   });
 
 });
 
 
-var count_section = function () {
+var count_area = function () {
 
     $.getJSON(my_server).done( function (status) {
-    var complete = _where(status, {finished: "true"})
-    var complete_total = complete.length;
-    var incomplete = _where(status, {finished: "false"})
-    var incomplete_total = incomplete.length;
 
-    $('#completed').html(complete_total);
-    $('#incomplete').html(incomplete_total);
+      var complete = _.where(status, {finished: "true"});
+      var complete_total = complete.length;
+      var incomplete = _.where(status, {finished: "false"});
+      var incomplete_total = incomplete.length;
 
-  });
+      $('#completed').html(complete_total);
+      $('#incomplete').html(incomplete_total);
+
+    });
 
 };
 
@@ -116,8 +118,10 @@ $('#todoList').on('click', 'li', function (event) {
     type: 'PUT',
     url: my_server + "/" + task_manager._id,
     data: task_manager
-  });
+  }).done(function() {
 
+    count_area();
+  });
 
 });
 
@@ -149,6 +153,7 @@ $('#todoList').on('click', 'input', function (event) {
 
 });
 
+count_area();
 
 // FILTER - when completed button is clicked - show completed list items only
 // $('#show_comp').on('click', function () {
