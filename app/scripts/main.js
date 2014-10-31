@@ -156,23 +156,21 @@ $('#todoList').on('click', 'input', function (event) {
 count_area();
 
 // FILTER - when completed button is clicked - show completed list items only
-// $('#show_comp').on('click', function () {
-//
-//   }
-//
-// });
+$('#show_comp').on('click', function (event) {
+  event.preventDefault();
 
+});
 
 //FILTER - when incomplete button is clicked - show incomplete list items only
-// $('#show_incomp').on('click', function (event) {
-//   event.preventDefault();
-//   // show incomplete list items only
-// });
+$('#show_incomp').on('click', function (event) {
+  event.preventDefault();
+  // show incomplete list items only
+});
 
 
 // FILTER - when all button is clicked - show all list items
-// $('#show_all').on('click', function () {
-//   // show all list items
-//   }
-//
-// });
+$('#show_all').on('click', function (event) {
+  event.preventDefault();
+  // show all list items
+
+});
