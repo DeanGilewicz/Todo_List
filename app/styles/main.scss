@@ -31,12 +31,13 @@ body {
     width: 200px;
     margin: 28px 50px 00px 0px;
     font-size: 12px;
+    text-align: right;
 
     .tt, .tc, .ti {
       margin: 6px 0px;
     }
 
-    #all {
+    #all, #completed, #incomplete {
       margin-left: 40px;
     }
   }

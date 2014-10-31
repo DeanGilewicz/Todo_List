@@ -29,6 +29,21 @@ $.getJSON(my_server).done( function (data) {
 });
 
 
+var count_section = function () {
+
+    $.getJSON(my_server).done( function (status) {
+    var complete = _where(status, {finished: "true"})
+    var complete_total = complete.length;
+    var incomplete = _where(status, {finished: "false"})
+    var incomplete_total = incomplete.length;
+
+    $('#completed').html(complete_total);
+    $('#incomplete').html(incomplete_total);
+
+  });
+
+};
+
 // adding new tasks to my todo list
 var task, contents;
 
