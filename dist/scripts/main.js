@@ -1,41 +1,3 @@
-/* global describe, it */
-
-(function () {
-  'use strict';
-
-  describe('Todo Object', function() {
-
-    var task, task_list;
-
-    // before each describe statement runs todo = new Todo
-    beforeEach(function() {
-      task = new ToDo();
-    });
-
-    describe('List Items', function() {
-
-      it('should be an instance of todo', function() {
-        expect(task).to.be.an.instanceof(ToDo);
-      });
-
-      it('should have a task', function() {
-        expect(task).to.have.property('task');
-      });
-
-      it('should have a finished', function() {
-        expect(task).to.have.property('finished');
-      });
-
-      it('should be status false by default', function() {
-        expect(task.finished).to.equal('false');
-      });
-
-    });
-
-  });
-
-})();
-
 var my_server = 'http://tiy-atl-fe-server.herokuapp.com/collections/testtododg4';
 
 // ToDo Constructor (Blueprint)
@@ -192,30 +154,6 @@ $('#todoList').on('click', 'input', function (event) {
 
 });
 
-<<<<<<< HEAD
-
-// FILTER - when completed button is clicked - show completed list items only
-// $('#show_comp').on('click', function () {
-//
-//   }
-//
-// });
-
-
-//FILTER - when incomplete button is clicked - show incomplete list items only
-// $('#show_incomp').on('click', function (event) {
-//   event.preventDefault();
-//   // show incomplete list items only
-// });
-
-
-// FILTER - when all button is clicked - show all list items
-// $('#show_all').on('click', function () {
-//   // show all list items
-//   }
-//
-// });
-=======
 count_area();
 
 // FILTER - when completed button is clicked - show completed list items only
@@ -248,4 +186,3 @@ $('.filters').on('click', '#show_all', function (event) {
   $(".incompShow").css('display', 'inline');
 
 });
->>>>>>> dev
