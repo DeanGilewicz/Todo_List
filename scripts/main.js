@@ -225,6 +225,7 @@ $('.filters').on('click', '#show_comp', function (event) {
   $(".incomplete").css('display', 'none');
   $(".compShow").css('display', 'inline');
   $(".incompShow").css('display', 'none');
+
 });
 
 //FILTER - when incomplete button is clicked - show incomplete list items only
