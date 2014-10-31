@@ -24,15 +24,31 @@ $.getJSON(my_server).done( function (data) {
   _.each(my_todo_list, function(items) {
     $('#todoList').append(rendered(items));
     $('#all').html(my_todo_list.length);
+    count_area();
   });
 
 });
 
+var complete, incomplete;
+
+var count_area = function () {
+
+    $.getJSON(my_server).done( function (status) {
+
+      complete = _.where(status, {finished: "true"});
+      var complete_total = complete.length;
+      incomplete = _.where(status, {finished: "false"});
+      var incomplete_total = incomplete.length;
+
+      $('#completed').html(complete_total);
+      $('#incomplete').html(incomplete_total);
+
+    });
+
+};
 
 // adding new tasks to my todo list
 var task, contents;
-// var total_tasks = $('#todoList li').length;
-// $('#all').html(total_tasks);
 
 // when add button is clicked - a new item is added to list (array)
 $('#Chores').on('submit', function (event) {
@@ -79,7 +95,6 @@ $('#Chores').on('submit', function (event) {
 
 var incomplete, completed;
 
-
 // Manage ToDo items - marking them complete/incomplete
 var task_manager;
 
@@ -104,13 +119,16 @@ $('#todoList').on('click', 'li', function (event) {
     type: 'PUT',
     url: my_server + "/" + task_manager._id,
     data: task_manager
-  });
+  }).done(function() {
 
+    count_area();
+  });
 
 });
 
 
 var item_delete;
+
 // when delete button is clicked
 $('#todoList').on('click', 'input', function (event) {
   event.preventDefault();
@@ -136,40 +154,34 @@ $('#todoList').on('click', 'input', function (event) {
 
 });
 
-
+count_area();
 
 // FILTER - when completed button is clicked - show completed list items only
-// $('#show_comp').on('click', function () {
-//
-//   if(task_manager.finished === 'true') {
-//
-//     return $(task_manager).length - ;
-//
-//
-// var id = $(this).attr('id');
-//
-// item_delete = _.findWhere(my_todo_list, { _id: id });
-//
-//   }
-//
-//
-// });
+$('.filters').on('click', '#show_comp', function (event) {
+  event.preventDefault();
+  $(".complete").css('display', 'block');
+  $(".incomplete").css('display', 'none');
+  $(".compShow").css('display', 'inline');
+  $(".incompShow").css('display', 'none');
+});
+
+//FILTER - when incomplete button is clicked - show incomplete list items only
+$('.filters').on('click', '#show_incomp', function (event) {
+  event.preventDefault();
+  $(".complete").css('display', 'none');
+  $(".incomplete").css('display', 'block');
+  $(".compShow").css('display', 'none');
+  $(".incompShow").css('display', 'inline');
+
+});
 
 
-// //FILTER - when incomplete button is clicked - show incomplete list items only
-// $('#show_incomp').on('click', function (event) {
-//   event.preventDefault();
-//   // show incomplete list items only
-// });
-//
-//
-//
-//
-// // FILTER - when all button is clicked - show all list items
-// $('#show_all').on('click', function () {
-//   if()
-//
-//   }
-//
-//   // show all list items
-// });
+// FILTER - when all button is clicked - show all list items
+$('.filters').on('click', '#show_all', function (event) {
+  event.preventDefault();
+  $(".complete").css('display', 'block');
+  $(".incomplete").css('display', 'block');
+  $(".compShow").css('display', 'inline');
+  $(".incompShow").css('display', 'inline');
+
+});
