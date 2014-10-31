@@ -40,7 +40,7 @@
         </div>
         <div class="filters">
           <span>Filter Your Tasks:</span>
-          <button id="show_all">All</button>
+          <button id="show_all" class="active">All</button>
           <button id="show_comp">Completed</button>
           <button id="show_incomp">Incomplete</button>
         </div>
@@ -56,10 +56,10 @@
     <script type="text/template" id="script_all_items">
       <% if(finished == 'true') { %>
         <li id="<%= _id %>" class="complete"><button id="done" class="checked"></button><%= task %></li>
-        <input id="<%= _id %>" class="del_btn"></input>
+        <input id="<%= _id %>" class="del_btn compShow"></input>
       <% } else { %>
-        <li id="<%= _id %>"><button id="done" class="checked"></button><%= task %></li>
-        <input id="<%= _id %>" class="del_btn"></input>
+        <li id="<%= _id %>" class="incomplete"><button id="done" class="checked"></button><%= task %></li>
+        <input id="<%= _id %>" class="del_btn incompShow"></input>
       <% } %>
     </script>
 

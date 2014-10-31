@@ -29,14 +29,15 @@ $.getJSON(my_server).done( function (data) {
 
 });
 
+var complete, incomplete;
 
 var count_area = function () {
 
     $.getJSON(my_server).done( function (status) {
 
-      var complete = _.where(status, {finished: "true"});
+      complete = _.where(status, {finished: "true"});
       var complete_total = complete.length;
-      var incomplete = _.where(status, {finished: "false"});
+      incomplete = _.where(status, {finished: "false"});
       var incomplete_total = incomplete.length;
 
       $('#completed').html(complete_total);
@@ -156,21 +157,31 @@ $('#todoList').on('click', 'input', function (event) {
 count_area();
 
 // FILTER - when completed button is clicked - show completed list items only
-$('#show_comp').on('click', function (event) {
+$('.filters').on('click', '#show_comp', function (event) {
   event.preventDefault();
-
+  $(".complete").css('display', 'block');
+  $(".incomplete").css('display', 'none');
+  $(".compShow").css('display', 'inline');
+  $(".incompShow").css('display', 'none');
 });
 
 //FILTER - when incomplete button is clicked - show incomplete list items only
-$('#show_incomp').on('click', function (event) {
+$('.filters').on('click', '#show_incomp', function (event) {
   event.preventDefault();
-  // show incomplete list items only
+  $(".complete").css('display', 'none');
+  $(".incomplete").css('display', 'block');
+  $(".compShow").css('display', 'none');
+  $(".incompShow").css('display', 'inline');
+
 });
 
 
 // FILTER - when all button is clicked - show all list items
-$('#show_all').on('click', function (event) {
+$('.filters').on('click', '#show_all', function (event) {
   event.preventDefault();
-  // show all list items
+  $(".complete").css('display', 'block');
+  $(".incomplete").css('display', 'block');
+  $(".compShow").css('display', 'inline');
+  $(".incompShow").css('display', 'inline');
 
 });
