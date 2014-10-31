@@ -38,11 +38,13 @@
             <span id="incomplete"></span>
           </div>
         </div>
-
+        <div class="filters">
+          <span>Filter Your Tasks:</span>
+          <button id="show_all" class="active">All</button>
+          <button id="show_comp">Completed</button>
+          <button id="show_incomp">Incomplete</button>
+        </div>
         <h1>Do Your Chores!</h1>
-        <!-- <button id="show_all"></button>
-        <button id="show_comp"></button>
-        <button id="show_incomp"></button> -->
         <form id="Chores">
             <input id="input_text" placeholder="Enter Your Chore" value="" />
             <button id="submit">Add</button>
@@ -54,10 +56,10 @@
     <script type="text/template" id="script_all_items">
       <% if(finished == 'true') { %>
         <li id="<%= _id %>" class="complete"><button id="done" class="checked"></button><%= task %></li>
-        <input id="<%= _id %>" class="del_btn"></input>
+        <input id="<%= _id %>" class="del_btn compShow"></input>
       <% } else { %>
-        <li id="<%= _id %>"><button id="done" class="checked"></button><%= task %></li>
-        <input id="<%= _id %>" class="del_btn"></input>
+        <li id="<%= _id %>" class="incomplete"><button id="done" class="checked"></button><%= task %></li>
+        <input id="<%= _id %>" class="del_btn incompShow"></input>
       <% } %>
     </script>
 
@@ -70,7 +72,6 @@
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
-        <script src="../test/spec/test.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
